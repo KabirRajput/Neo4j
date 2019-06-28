@@ -1,0 +1,21 @@
+CREATE (inForcePolicies:Category {name:'In Force Policies'})
+
+//InForcePolicies 
+CREATE (manuMaster:Product {name:'Manu Master', policyScannedPDF:'none', coverageScope:'none',price:1000.00})
+CREATE (manuBright:Product {name:'Manu Bright', policyScannedPDF:'none', coverageScope:'none',price:1200.00})
+CREATE (manuStaff:Product {name:'Manu Staff', familyLink:'wife_node, child_node', coverageScope:'none'})
+
+CREATE (previousClaimHistory:Category {name:'Previous Claim History'})
+
+//previousClaimHistory
+CREATE (headScan:Product {name:'Head Scan', mri:'none',date:'xxxx',price:1000.00, followUpTreatment:'none'})
+CREATE (sportInjury:Product {name:'Sport Injury', mri:'none',date:'xxxx',price:1300.00})
+CREATE (outPatientHistory:Product {name:'Outpatient History', coldCounter:5, eczemaCounter:6})
+
+MERGE (manuMaster)-[:IS_IN]->(inForcePolicies)
+MERGE (manuBright)-[:IS_IN]->(inForcePolicies)
+MERGE (manuStaff)-[:IS_IN]->(inForcePolicies)
+
+MERGE (headScan)-[:IS_IN]->(previousClaimHistory)
+MERGE (sportInjury)-[:IS_IN]->(previousClaimHistory)
+MERGE (outPatientHistory)-[:IS_IN]->(previousClaimHistory)

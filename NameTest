@@ -1,0 +1,7 @@
+// Customers
+CREATE (chan:Customer {name: 'Chan Tai Man', email: 'chanTaiMan@example.com', age: 50})
+
+MERGE (chan)-[:HISTORY {history_count: 15}]->(outPatientHistory)
+MERGE (chan)-[:ADDED_TO_WISH_LIST]->(manuBright)
+MERGE (chan)-[:BOUGHT]->(manuMaster)
+MERGE (chan)-[:BENIFITS_FROM]->(manuStaff)
